@@ -1,0 +1,1 @@
+start cmd /c "cd Assets\TsProj&&npm run build"
