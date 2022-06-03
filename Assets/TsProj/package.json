@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node copyJsFile.js output ../Resources"
+  },
+  "dependencies": {
+    "typescript": "^4.6.3"
   },
   "keywords": [],
   "author": "",

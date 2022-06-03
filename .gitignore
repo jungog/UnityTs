@@ -1,0 +1,15 @@
+.idea
+Library
+ProjectSettings
+Logs
+Temp
+UserSettings
+*.sln
+*.csproj
+.vscode
+*.log
+*.lighting
+.DS_Store
+node_modules
+obj
+projects/*/builds
