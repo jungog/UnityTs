@@ -9,7 +9,7 @@ namespace AssetImportProcessor
     /// </summary>
     public class AssetImportProcessor : AssetPostprocessor
     {
-        static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths) 
+        static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
             // if (EditorTools.AvoidReimport) return;
             //检测变更文件
@@ -17,12 +17,12 @@ namespace AssetImportProcessor
             {
                 for (int i = 0; i < importedAssets.Length; i++)
                 {
-                    if(importedAssets[i].EndsWith(".ts"))
+                    if (importedAssets[i].EndsWith(".ts"))
                     {
                         UnityEngine.Debug.Log("Reimported Asset: " + importedAssets[i]);
                         System.Diagnostics.Process p = new System.Diagnostics.Process();
 
-                        p.StartInfo.FileName = Application.dataPath+"/TsProj/npm_run_build.bat";
+                        p.StartInfo.FileName = Application.dataPath + "/TsProj/npm_run_build.bat";
                         p.StartInfo.UseShellExecute = false;
                         p.StartInfo.RedirectStandardInput = true;
                         p.StartInfo.RedirectStandardOutput = true;
@@ -33,7 +33,7 @@ namespace AssetImportProcessor
                         {
                             p.Start();
                             p.WaitForExit();
-                            p.Close();                         
+                            p.Close();
                         }
                         catch (Exception e)
                         {
@@ -50,12 +50,12 @@ namespace AssetImportProcessor
             {
                 for (int i = 0; i < deletedAssets.Length; i++)
                 {
-                    if(deletedAssets[i].EndsWith(".ts"))
+                    if (deletedAssets[i].EndsWith(".ts"))
                     {
                         UnityEngine.Debug.Log("Deleted Asset: " + deletedAssets[i]);
                         string[] path = deletedAssets[i].Split('/');
-                        AssetDatabase.DeleteAsset("Assets/Resources/"+path[path.Length-1].Replace(".ts",".js.txt"));
-                        AssetDatabase.DeleteAsset("Assets/TsProj/output/"+path[path.Length-1].Replace(".ts",".js"));
+                        AssetDatabase.DeleteAsset("Assets/Resources/" + path[path.Length - 1].Replace(".ts", ".js.txt"));
+                        AssetDatabase.DeleteAsset("Assets/TsProj/output/" + path[path.Length - 1].Replace(".ts", ".js"));
                     }
                 }
             }

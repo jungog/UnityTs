@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Puerts;
 
@@ -9,7 +7,7 @@ public class test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jsEnv = new JsEnv();
+        jsEnv = new JsEnv(new DefaultLoader(), 8282);
         jsEnv.Eval("require('test')");
     }
 
